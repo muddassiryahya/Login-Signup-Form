@@ -5,9 +5,13 @@ import {
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import Logo from "../assets/images/logo.png";
+import { signOut, auth } from "../config/firebase"
+import Logo2 from "../assets/images/short logo.png";
+
 
 
 
@@ -17,11 +21,19 @@ const AppLayout = ({ children }) => {
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
+    const logoutUser = () => {
+        signOut(auth).then(() => {
+            console.log("Sign-out successful.");
+        }).catch((error) => {
+            console.log("An error happened-->", error);
+        });
+
+    }
     return (
         <Layout style={{ height: "100vh" }}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="logo-container demo-logo-vertical">
-                    <img width={"100px"} src={Logo} alt="" />
+                    <img width={collapsed ? "50px" : "100px"} src={collapsed ? Logo2 : Logo} alt="" />
                 </div>
                 <Menu
                     theme="dark"
@@ -42,6 +54,12 @@ const AppLayout = ({ children }) => {
                             key: '3',
                             icon: <UploadOutlined />,
                             label: 'nav 3',
+                        },
+                        {
+                            key: '4',
+                            icon: <LogoutOutlined />,
+                            label: 'Logout',
+                            onClick: () => logoutUser()
                         },
                     ]}
                 />

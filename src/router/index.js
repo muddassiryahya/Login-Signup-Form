@@ -13,6 +13,7 @@ function AppRouter() {
 
 
     useEffect(() => {
+        console.log("Test-->");
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 console.log("User-->", user);
@@ -25,7 +26,7 @@ function AppRouter() {
             setLoader(false)
         });
 
-    })
+    }, [])
     return (
         <>
             {loader ?
