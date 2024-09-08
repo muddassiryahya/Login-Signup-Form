@@ -11,12 +11,14 @@ import { Button, Layout, Menu, theme } from 'antd';
 import Logo from "../assets/images/logo.png";
 import { signOut, auth } from "../config/firebase"
 import Logo2 from "../assets/images/short logo.png";
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const { Header, Sider, Content } = Layout;
 const AppLayout = ({ children }) => {
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer, borderRadiusLG },
@@ -52,8 +54,9 @@ const AppLayout = ({ children }) => {
                         },
                         {
                             key: '3',
-                            icon: <UploadOutlined />,
-                            label: 'nav 3',
+                            icon: <UserOutlined />,
+                            label: 'Users',
+                            onClick: () => navigate("/users")
                         },
                         {
                             key: '4',

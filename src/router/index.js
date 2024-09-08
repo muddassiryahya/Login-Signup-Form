@@ -5,6 +5,7 @@ import Profile from "../Pages/Profile";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, auth } from "../config/firebase";
 import { Spin } from "antd";
+import UsersPage from "../Pages/User";
 
 
 function AppRouter() {
@@ -47,8 +48,11 @@ function AppRouter() {
                         <Route path="/profile" element=
                             {isUser ? <Profile /> : <Navigate to={"/"} />}
                         />
+                        <Route path="/users" element=
+                            {isUser ? <UsersPage /> : <Navigate to={"/"} />}
+                        />
                     </Routes>
-                </BrowserRouter>
+                </BrowserRouter >
             }
         </>
     )
