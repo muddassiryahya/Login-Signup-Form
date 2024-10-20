@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -12,12 +12,24 @@ import Logo from "../assets/images/logo.png";
 import { signOut, auth } from "../config/firebase"
 import Logo2 from "../assets/images/short logo.png";
 import { useNavigate } from 'react-router-dom';
+import User from '../context/UserContext';
+import Chat from '../context/ChatContext';
+
 
 
 
 
 const { Header, Sider, Content } = Layout;
 const AppLayout = ({ children }) => {
+
+    const user = useContext(User);
+    const chat = useContext(Chat);
+
+    console.log("User:", user);
+    console.log("Chat:", chat);
+
+
+
     const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const {
