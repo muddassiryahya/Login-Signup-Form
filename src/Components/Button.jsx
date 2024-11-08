@@ -1,14 +1,15 @@
 import { Button } from 'antd';
-import { useContext } from 'react';
+import { useContext, useId } from 'react';
 import User from '../context/UserContext';
 
 function AppButton({ title, obj }) {
     const user = useContext(User);
+    const id = useId()
 
     console.log("User-->", user);
 
     return (
-        <Button onClick={() => user.setUser({ email: "ahmed@gmail.com", name: "Ahmed" })} type="primary">{title} </Button>
+        <Button onClick={() => console.log("Id", id)} type="primary" > {title} </Button >
     )
 };
 
